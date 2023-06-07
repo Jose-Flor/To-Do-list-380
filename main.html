@@ -1,83 +1,97 @@
-<!DOCTYPE html>
 <html>
 <head>
   <title>Organize Orbit</title>
+  <link rel="shortcut icon" type="image/jpg" href="images/Organize-Orbit.jpg"/>
+  <link rel="stylesheet" type="text/css" href="style.css" />
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-    
-    .container {
-      display: flex;
-    }
-    
-    .sidebar {
-      width: 200px;
-      background-color: #333;
-      color: #fff;
-      padding: 20px;
-    }
-    
-    .sidebar ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    
-    .sidebar li {
-      margin-bottom: 10px;
-      padding-top: 10px;
-      padding-bottom: 10px;
-    }
-    
-    .sidebar a {
-      text-decoration: none;
-      color: #fff;
-    }
-    
+    /* Additional styles specific to the Organize Orbit application */
     .content {
-      flex: 1;
-      padding: 20px;
-    }
-    
-    h1 {
-      margin-top: 0;
+      display: none;
     }
 
-    html, body, .container {
-      height: 100%;
+    .content.active {
+      display: block;
     }
-    
-    .sidebar {
-      height: 100%;
-    }
-    .Logo{
-    height: 2px;
-    width: 2px;
-}
   </style>
 </head>
 <body>
   <div class="container">
     <div class="sidebar">
       <ul>
-        
-        <li><img src="/images/Organize-Orbit.jpg" alt="logo" 
+        <li><img src="images/Organize-Orbit.jpg" alt="logo" 
             width="150px" height="120px"></li>
-        <li><a href="#">To Do List</a></li>
+        <li><a href="#" onclick="showContent('content-todo')">To Do List</a></li>
+        <li><a href="#" onclick="showContent('content-notes')">Sticky Notes</a></li>
         <li><a href="#">Calendar</a></li>
-        <li><a href="#">Sticky Notes</a></li>
         <li><a href="#">Random</a></li>
       </ul>
     </div>
     
-    <div class="content">
-      <h1>Organize Orbit</h1>
+    <div class="content active" id="content-todo">
+      <h1>Welcome to Organize Orbit</h1>
       <p>Best Organizer in the Galaxy!</p>
+
+      <div>
+        <h2>Add a Task</h2>
+        <input type="text" id="taskInput" placeholder="Enter task">
+        <button onclick="addTask()">Add Task</button>
+      </div>
+
+      <ul id="taskList">
+      </ul>
+    </div>
+
+    <div class="content" id="content-notes">
+      <h1>Welcome to Organize Orbit</h1>
+      <p>Best Organizer in the Galaxy!</p>
+
+      <div class="sticky-notes">
+        <h2>Create a Note</h2>
+        <textarea id="noteInput" placeholder="Note Taking Journey Begins Here"></textarea>
+        <button onclick="addNote()">Add Note</button>
+      </div>
+
+      <ul id="noteList">
+      </ul>
     </div>
   </div>
+
+  <script>
+    function addTask() {
+      const taskInput = document.getElementById('taskInput');
+      const taskText = taskInput.value.trim();
+      const taskList = document.getElementById('taskList');
+
+      if (taskText !== '') {
+        const taskItem = document.createElement('li');
+        taskItem.innerText = taskText;
+        taskList.appendChild(taskItem);
+        taskInput.value = '';
+      }
+    }
+
+    function addNote() {
+      const noteInput = document.getElementById('noteInput');
+      const noteText = noteInput.value.trim();
+      const noteList = document.getElementById('noteList');
+
+      if (noteText !== '') {
+        const noteItem = document.createElement('li');
+        noteItem.innerText = noteText;
+        noteList.appendChild(noteItem);
+        noteInput.value = '';
+      }
+    }
+
+    function showContent(contentId) {
+      const contentList = document.getElementsByClassName('content');
+      for (let i = 0; i < contentList.length; i++) {
+        contentList[i].classList.remove('active');
+      }
+
+      const content = document.getElementById(contentId);
+      content.classList.add('active');
+    }
+  </script>
 </body>
 </html>
-
