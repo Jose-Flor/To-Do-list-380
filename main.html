@@ -4,12 +4,13 @@
   <link rel="shortcut icon" type="image/jpg" href="images/Organize-Orbit.jpg"/>
   <link rel="stylesheet" type="text/css" href="style.css" />
   <style>
-    /* Additional styles specific to the Organize Orbit application */
     .content {
-      display: none;
+      display
+      : none;
     }
 
-    .content.active {
+    .content.active 
+    {
       display: block;
     }
   </style>
@@ -70,7 +71,8 @@
       }
     }
 
-    function addNote() {
+    function addNote() 
+    {
       const noteInput = document.getElementById('noteInput');
       const noteText = noteInput.value.trim();
       const noteList = document.getElementById('noteList');
@@ -83,7 +85,8 @@
       }
     }
 
-    function showContent(contentId) {
+    function showContent(contentId) 
+    {
       const contentList = document.getElementsByClassName('content');
       for (let i = 0; i < contentList.length; i++) {
         contentList[i].classList.remove('active');

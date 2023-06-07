@@ -51,7 +51,6 @@ body {
     display: none;
   }
   
-  /* Task List styles */
   .task-list {
     list-style: none;
     padding: 0;
@@ -67,8 +66,7 @@ body {
   .task-list input[type="checkbox"] {
     margin-right: 10px;
   }
-  
-  /* Sticky Notes styles */
+
   .sticky-notes {
     background-color: #fff;
     padding: 20px;
