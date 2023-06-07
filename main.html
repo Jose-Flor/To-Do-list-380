@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Organize Orbit</title>
+  <title>O r g a n i z e O r b i t</title>
   <style>
     body {
       margin: 0;
@@ -66,7 +66,7 @@
         
         <li><img src="/images/Organize-Orbit.jpg" alt="logo" 
             width="150px" height="120px"></li>
-        <li><a href="#">To Do List</a></li>
+        <li><button id="show-todo-button">To Do List</button></li>    
         <li><a href="#">Calendar</a></li>
         <li><a href="#">Sticky Notes</a></li>
         <li><a href="#">Random</a></li>
@@ -74,10 +74,53 @@
     </div>
     
     <div class="content">
-      <h1>Organize Orbit</h1>
-      <p>Best Organizer in the Galaxy!</p>
+      <h1>O r g a n i z e O r b i t</h1>
+      <p>Turn Your Task Chaos into Constellations!</p>
+
+      <div id="todo-section" style="display: none;">
+        <input type="text" id="todo-input">
+        <button id="add-button">Add</button>
+        <ul id="todo-list">
+        </ul>
+      </div>
+
     </div>
   </div>
+
+  <script>
+    // Get HTML elements
+    const todoButton = document.getElementById('show-todo-button');
+    const todoSection = document.getElementById('todo-section');
+    const addButton = document.getElementById('add-button');
+    const todoInput = document.getElementById('todo-input');
+    const todoList = document.getElementById('todo-list');
+
+    // Show To Do List section when button is clicked
+    todoButton.addEventListener('click', () => {
+      todoSection.style.display = 'block';
+    });
+
+    // Add item to the list
+    addButton.addEventListener('click', () => {
+      const listItem = document.createElement('li');
+      const deleteButton = document.createElement('button');
+
+      // Add delete functionality to the button
+      deleteButton.textContent = 'Delete';
+      deleteButton.addEventListener('click', () => {
+        todoList.removeChild(listItem);
+      });
+
+      // Add text to the list item
+      listItem.textContent = todoInput.value;
+      listItem.appendChild(deleteButton);
+      todoList.appendChild(listItem);
+      
+      // Clear the input field
+      todoInput.value = '';
+    });
+  </script>
+
 </body>
 </html>
 
