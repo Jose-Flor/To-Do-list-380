@@ -16,7 +16,9 @@ addButton.addEventListener('click', () => {
   const deleteButton = document.createElement('button');
 
   // Add delete functionality to the button
-  deleteButton.textContent = 'Delete';
+  deleteButton.textContent = 'X';
+  deleteButton.classList.add('deleteButton'); // assign a class to the button for styling
+
   deleteButton.addEventListener('click', () => {
     todoList.removeChild(listItem);
   });
