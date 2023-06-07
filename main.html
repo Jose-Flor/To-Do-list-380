@@ -2,71 +2,15 @@
 <html>
 <head>
   <title>O r g a n i z e O r b i t</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-    
-    .container {
-      display: flex;
-    }
-    
-    .sidebar {
-      width: 200px;
-      background-color: #333;
-      color: #fff;
-      padding: 20px;
-    }
-    
-    .sidebar ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    
-    .sidebar li {
-      margin-bottom: 10px;
-      padding-top: 10px;
-      padding-bottom: 10px;
-    }
-    
-    .sidebar a {
-      text-decoration: none;
-      color: #fff;
-    }
-    
-    .content {
-      flex: 1;
-      padding: 20px;
-    }
-    
-    h1 {
-      margin-top: 0;
-    }
-
-    html, body, .container {
-      height: 100%;
-    }
-    
-    .sidebar {
-      height: 100%;
-    }
-    .Logo{
-    height: 2px;
-    width: 2px;
-}
-  </style>
+  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
   <div class="container">
     <div class="sidebar">
       <ul>
-        
         <li><img src="/images/Organize-Orbit.jpg" alt="logo" 
             width="150px" height="120px"></li>
-        <li><button id="show-todo-button">To Do List</button></li>    
+        <li><button id="show-todo-button">To Do List</button></li>
         <li><a href="#">Calendar</a></li>
         <li><a href="#">Sticky Notes</a></li>
         <li><a href="#">Random</a></li>
@@ -87,40 +31,6 @@
     </div>
   </div>
 
-  <script>
-    // Get HTML elements
-    const todoButton = document.getElementById('show-todo-button');
-    const todoSection = document.getElementById('todo-section');
-    const addButton = document.getElementById('add-button');
-    const todoInput = document.getElementById('todo-input');
-    const todoList = document.getElementById('todo-list');
-
-    // Show To Do List section when button is clicked
-    todoButton.addEventListener('click', () => {
-      todoSection.style.display = 'block';
-    });
-
-    // Add item to the list
-    addButton.addEventListener('click', () => {
-      const listItem = document.createElement('li');
-      const deleteButton = document.createElement('button');
-
-      // Add delete functionality to the button
-      deleteButton.textContent = 'Delete';
-      deleteButton.addEventListener('click', () => {
-        todoList.removeChild(listItem);
-      });
-
-      // Add text to the list item
-      listItem.textContent = todoInput.value;
-      listItem.appendChild(deleteButton);
-      todoList.appendChild(listItem);
-      
-      // Clear the input field
-      todoInput.value = '';
-    });
-  </script>
-
+  <script src="main.js"></script>
 </body>
 </html>
-
