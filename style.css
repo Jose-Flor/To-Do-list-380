@@ -45,9 +45,23 @@ body {
   html, body, .container {
     height: 100%;
   }
+
+  #show-todo-button {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    line-height: normal;
+    cursor: pointer;
+    color: #fff;
+  }
   
-  .Logo {
-    height: 2px;
-    width: 2px;
+  #show-todo-button:hover {
+    color: #ff6347;  
+  }
+  
+  .logo {
+    height: 20px;
+    width: 20px;
   }
   
