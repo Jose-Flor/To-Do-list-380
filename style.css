@@ -90,3 +90,6 @@ body {
     width: 20px;
   }
   
+li a:hover {
+  color: #ff6347;  
+}
