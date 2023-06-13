@@ -93,3 +93,10 @@ body {
 li a:hover {
   color: #ff6347;  
 }
+
+.credentials {
+  margin-top: 150px;
+  position: absolute;
+  margin-left: 250px;
+  
+}
