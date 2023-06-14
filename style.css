@@ -1,7 +1,3 @@
-.logo{
-    height: 20px;
-    width: 20px;
-}
 body {
     margin: 0;
     padding: 0;
@@ -10,7 +6,6 @@ body {
   
   .container {
     display: flex;
-    height: 100vh;
   }
   
   .sidebar {
@@ -18,6 +13,7 @@ body {
     background-color: #333;
     color: #fff;
     padding: 20px;
+    height: 100%;
   }
   
   .sidebar ul {
@@ -40,57 +36,336 @@ body {
   .content {
     flex: 1;
     padding: 20px;
-    background-color: #f7f7f7;
   }
   
   h1 {
     margin-top: 0;
   }
   
-  .hidden {
-    display: none;
-  }
-  
-  .task-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .task-list li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .task-list input[type="checkbox"] {
-    margin-right: 10px;
+  html, body, .container {
+    height: 100%;
   }
 
-  .sticky-notes {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .sticky-notes h2 {
-    margin-top: 0;
-  }
-  
-  .sticky-notes textarea {
-    width: 100%;
-    height: 200px;
-    padding: 10px;
+  #show-todo-button {
+    background: none;
     border: none;
-    resize: none;
-  }
-  
-  .sticky-notes button {
-    background-color: #333;
+    padding: 0;
+    font: inherit;
+    line-height: normal;
+    cursor: pointer;
     color: #fff;
-    padding: 10px 20px;
+  }
+  
+  #show-todo-button:hover {
+    color: #ff6347;  
+  }
+
+  #todo-list li:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#todo-list li:nth-child(odd) {
+    background-color: #e9e9e9;
+}
+
+.deleteButton {
+    float: right;
+    background: none;
     border: none;
-    border-radius: 5px;
+    color: black;
     cursor: pointer;
   }
+  
+#todo-list {
+    list-style-type: none;
+}
+  
+#todo-list li {
+    display: flex;
+    justify-content: space-between;
+}
+  
+  .logo {
+    height: 20px;
+    width: 20px;
+  }
+  
+li a:hover {
+  color: #ff6347;  
+}
+
+.credentials {
+  margin-top: 150px;
+  position: absolute;
+  margin-left: 250px;
+  
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 13rem;
+  height: 3rem;
+  background-size: 300% 300%;
+  backdrop-filter: blur(1rem);
+  border-radius: 5rem;
+  transition: 0.5s;
+  animation: gradient_301 5s ease infinite;
+  border: double 4px transparent;
+  background-image: linear-gradient(#212121, #212121),  linear-gradient(137.48deg, #ffdb3b 10%,#FE53BB 45%, #8F51EA 67%, #0044ff 87%);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+#container-stars {
+  position: fixed;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transition: 0.5s;
+  backdrop-filter: blur(1rem);
+  border-radius: 5rem;
+}
+
+strong {
+  z-index: 2;
+  font-family: 'Avalors Personal Use';
+  font-size: 12px;
+  letter-spacing: 5px;
+  color: #FFFFFF;
+  text-shadow: 0 0 4px white;
+}
+
+#glow {
+  position: absolute;
+  display: flex;
+  width: 12rem;
+}
+
+.circle {
+  width: 100%;
+  height: 30px;
+  filter: blur(2rem);
+  animation: pulse_3011 4s infinite;
+  z-index: -1;
+}
+
+.circle:nth-of-type(1) {
+  background: rgba(254, 83, 186, 0.636);
+}
+
+.circle:nth-of-type(2) {
+  background: rgba(142, 81, 234, 0.704);
+}
+
+.btn:hover #container-stars {
+  z-index: 1;
+  background-color: #212121;
+}
+
+.btn:hover {
+  transform: scale(1.1)
+}
+
+.btn:active {
+  border: double 4px #FE53BB;
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  animation: none;
+}
+
+.btn:active .circle {
+  background: #FE53BB;
+}
+
+#stars {
+  position: relative;
+  background: transparent;
+  width: 200rem;
+  height: 200rem;
+}
+
+#stars::after {
+  content: "";
+  position: absolute;
+  top: -10rem;
+  left: -100rem;
+  width: 100%;
+  height: 100%;
+  animation: animStarRotate 90s linear infinite;
+}
+
+#stars::after {
+  background-image: radial-gradient(#ffffff 1px, transparent 1%);
+  background-size: 50px 50px;
+}
+
+#stars::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 170%;
+  height: 500%;
+  animation: animStar 60s linear infinite;
+}
+
+#stars::before {
+  background-image: radial-gradient(#ffffff 1px, transparent 1%);
+  background-size: 50px 50px;
+  opacity: 0.5;
+}
+
+@keyframes animStar {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-135rem);
+  }
+}
+
+@keyframes animStarRotate {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0);
+  }
+}
+
+@keyframes gradient_301 {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulse_3011 {
+  0% {
+    transform: scale(0.75);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    transform: scale(0.75);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+#sticky-notes-section {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+#note-input {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#save-button {
+  background-color: #ff6347;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+#save-button::before,
+#save-button::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(circle, rgba(254, 83, 186, 0.636), transparent);
+  background-size: 20% 20%;
+  pointer-events: none;
+  z-index: -1;
+  animation: animStar 5s linear infinite;
+}
+
+#save-button::after {
+  background-image: radial-gradient(circle, rgba(142, 81, 234, 0.704), transparent);
+  background-size: 10% 10%;
+  animation: animStar 8s linear infinite;
+}
+
+.delete-button {
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #c0392b;
+}
+
+@keyframes animStar {
+  0% {
+    transform: translate(-25%, -25%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+.sidebar ul li {
+  margin-bottom: 10px;
+}
+
+.calendar {
+  margin: 20px;
+}
+.calendar h2 {
+  text-align: center;
+  margin-top: 0;
+}
+
+.calendar table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.calendar table th,
+.calendar table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.calendar table th {
+  background-color: #f2f2f2;
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Organize Orbit</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <ul>
+        <li><img src="images/Organize-Orbit.jpg" alt="logo" width="150px" height="120px"></li>
+        <li><button id="show-todo-button">To Do List</button></li>
+        <li><a href="./Calendar.html">Calendar</a></li>
+        <li><a href="#">Sticky Notes</a></li>
+        <li><a href="#">Random</a></li>
+        <li><a href="./registration.html">Registration</a></li>
+        <li><a href="./signin.html">Sign-In</a></li>
+      </ul>
+    </div>
+    
+    <div class="content">
+      <h1>Organize Orbit</h1>
+      <p>Turn Your Task Chaos into Constellations!</p>
+
+      <div id="todo-section" class="hidden">
+        <input type="text" id="todo-input">
+        <button id="add-button">Add</button>
+        <ul id="todo-list"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Show/hide sections based on navigation
+    document.getElementById('show-todo-button').addEventListener('click', function() {
+      document.getElementById('todo-section').classList.remove('hidden');
+    });
+
+      document.getElementById('todo-section').classList.add('hidden');
+
+    // To-Do List functionality
+    document.getElementById('add-button').addEventListener('click', function() {
+      var todoInput = document.getElementById('todo-input');
+      var todoText = todoInput.value.trim();
+
+      if (todoText !== '') {
+        var todoList = document.getElementById('todo-list');
+        var todoItem = document.createElement('li');
+        todoItem.textContent = todoText;
+        todoList.appendChild(todoItem);
+        todoInput.value = '';
+
+        var deleteButton = document.createElement('button');
+        deleteButton.textContent = 'X';
+        deleteButton.className = 'delete-button';
+        todoItem.appendChild(deleteButton);
+
+        deleteButton.addEventListener('click', function() {
+          todoItem.remove();
+        });
+      }
+    });
+
+  ;
+  </script>
+</body>
+</html>
