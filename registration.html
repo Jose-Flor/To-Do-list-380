@@ -8,12 +8,13 @@
         <div class="container">
             <div class="sidebar">
               <ul>
-                <li><img src="images/Organize-Orbit.jpg" alt="logo" 
-                    width="150px" height="120px"></li>
-                <li><a href="./main.html">Main Menu</a></li>
-                <li><a href="#">Calendar</a></li>
+                <!-- Removed image from website here -->
+                <!-- <li><img src="images/Organize-Orbit.jpg" alt="logo" 
+                    width="150px" height="120px"></li> -->
+                <li><a href="./main.html">To Do List</a></li>
+                <!-- <li><a href="#">Calendar</a></li>
                 <li><a href="#">Sticky Notes</a></li>
-                <li><a href="#">Random</a></li>
+                <li><a href="#">Random</a></li> -->
                 <li><a href="./registration.html">Registration</a></li>
                 <li><a href="./signin.html">Sign-In</a></li>
               </ul>
@@ -47,5 +48,15 @@
                   </button>
             </p>
         </div>
+        <script>
+            // Generate stars
+            for (let i = 0; i < 100; i++) {
+              const star = document.createElement('div');
+              star.className = 'star';
+              star.style.top = `${Math.random() * 100}vh`;
+              star.style.left = `${Math.random() * 100}vw`;
+              document.body.appendChild(star);
+            }
+          </script>
     </body>
 </html>
