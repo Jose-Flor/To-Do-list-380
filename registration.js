@@ -3,13 +3,22 @@ function isValidPassword(password){
     return pattern.test(password);
 }
 
-function checkPassword(){
+function isValidEmail(email){
+    pattern = /([a-zA-Z]).*\@([a-zA-Z]).*/gm
+    return pattern.test(email);
+}
+
+function checkCredentials(){
+    var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
     var passwordConfirmation = document.getElementById("password_confirmation").value;
 
-    if (password === "" || passwordConfirmation === "") {
-        document.getElementById("error").innerHTML = "Must enter password.";
+    if (!isValidEmail(email)){
+        document.getElementById("error").innerHTML = "Invalid email";
     }// if
+    else if (password === "" || passwordConfirmation === "") {
+        document.getElementById("error").innerHTML = "Must enter password.";
+    }// else if
     else if (password !== passwordConfirmation){
         document.getElementById("error").innerHTML = "Passwords do not match.";
     }// else if
