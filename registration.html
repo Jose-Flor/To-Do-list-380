@@ -3,6 +3,7 @@
     <head>
         <title>O r g a n i z e O r b i t</title>
         <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript" src="registration.js"></script>
     </head>
     <body>
         <div class="container">
@@ -25,16 +26,16 @@
 
         <div class="credentials">
             <p>
-                Email: <input type="text" name="email">
+                Email: <input type="text" name="email" id="email">
             </p>
             <p>
-                Password: <input type="text" name="password">
+                Password: <input type="password" name="password" id="password">
             </p>
             <p>
-                Confirm Password: <input type="text" name="password_confirmation">    
+                Confirm Password: <input type="password" name="password_confirmation" id="password_confirmation">    
             </p>
             <p>
-                <button class="btn" type="button">
+                <button class="btn" type="button" onclick="checkPassword()">
                     <strong>Register</strong>
                     <div id="container-stars">
                       <div id="stars"></div>
@@ -46,6 +47,11 @@
                     </div>
                   </button>
             </p>
+            <p id="pw_criteria">
+                Password must contain both capital and lower case letters.
+            </p>
+            <p id="error"></p>
         </div>
+        
     </body>
 </html>
