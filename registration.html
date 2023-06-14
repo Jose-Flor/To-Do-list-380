@@ -23,36 +23,37 @@
 
         <div class="content">
             <h1> O r g a n i z e O r b i t</h1>
+            <div class="credentials">
+                <p>
+                    Email: <input type="text" name="email" id="email">
+                </p>
+                <p>
+                    Password: <input type="password" name="password" id="password">
+                </p>
+                <p>
+                    Confirm Password: <input type="password" name="password_confirmation" id="password_confirmation">    
+                </p>
+                <p>
+                    <button class="btn" type="button" onclick="checkPassword()">
+                        <strong>Register</strong>
+                        <div id="container-stars">
+                          <div id="stars"></div>
+                        </div>
+                      
+                        <div id="glow">
+                          <div class="circle"></div>
+                          <div class="circle"></div>
+                        </div>
+                      </button>
+                </p>
+                <p id="pw_criteria">
+                    Password must contain both capital and lower case letters.
+                </p>
+                <p id="error"></p>
+            </div>
         </div>
 
-        <div class="credentials">
-            <p>
-                Email: <input type="text" name="email" id="email">
-            </p>
-            <p>
-                Password: <input type="password" name="password" id="password">
-            </p>
-            <p>
-                Confirm Password: <input type="password" name="password_confirmation" id="password_confirmation">    
-            </p>
-            <p>
-                <button class="btn" type="button" onclick="checkPassword()">
-                    <strong>Register</strong>
-                    <div id="container-stars">
-                      <div id="stars"></div>
-                    </div>
-                  
-                    <div id="glow">
-                      <div class="circle"></div>
-                      <div class="circle"></div>
-                    </div>
-                  </button>
-            </p>
-            <p id="pw_criteria">
-                Password must contain both capital and lower case letters.
-            </p>
-            <p id="error"></p>
-        </div>
+        
         <script>
             // Generate stars
             for (let i = 0; i < 100; i++) {

@@ -17,6 +17,6 @@ function checkPassword(){
         document.getElementById("error").innerHTML = "Password must contain upper and lower case characters.";
     }// else if 
     else {
-        document.getElementById("error").innerHTML = "Congrats, you don't suck toes.";
+        document.getElementById("error").innerHTML = "Congrats, you're not a loser.";
     }// else
 }
