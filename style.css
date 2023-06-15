@@ -65,6 +65,13 @@ body {
     justify-content: center;
     text-align: center;
   }
+
+  .teamfooter {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-left: 50%;
+}
   
   h1 {
     margin-top: 0;
