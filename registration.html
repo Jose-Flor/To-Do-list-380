@@ -3,16 +3,17 @@
     <head>
         <title>O r g a n i z e O r b i t</title>
         <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript" src="registration.js"></script>
     </head>
     <body>
         <div class="container">
             <div class="sidebar">
               <ul>
-                <!-- Removed image from website here -->
-                <!-- <li><img src="images/Organize-Orbit.jpg" alt="logo" 
-                    width="150px" height="120px"></li> -->
-                <li><a href="./main.html">To Do List</a></li>
-                <!-- <li><a href="#">Calendar</a></li>
+                <li><img src="images/Organize-Orbit.jpg" alt="logo" 
+                    width="150px" height="120px"></li>
+                <li><a href="./main.html">Main Menu</a></li>
+                <li><a href="./teammembers.html">Team Members</a></li>
+                <li><a href="./Calendar.html">Calendar</a></li>
                 <li><a href="#">Sticky Notes</a></li>
                 <li><a href="#">Random</a></li> -->
                 <li><a href="./registration.html">Registration</a></li>
@@ -22,32 +23,37 @@
 
         <div class="content">
             <h1> O r g a n i z e O r b i t</h1>
+            <div class="credentials">
+                <p>
+                    Email: <input type="text" name="email" id="email">
+                </p>
+                <p>
+                    Password: <input type="password" name="password" id="password">
+                </p>
+                <p>
+                    Confirm Password: <input type="password" name="password_confirmation" id="password_confirmation">    
+                </p>
+                <p>
+                    <button class="btn" type="button" onclick="checkCredentials()">
+                        <strong>Register</strong>
+                        <div id="container-stars">
+                          <div id="stars"></div>
+                        </div>
+                      
+                        <div id="glow">
+                          <div class="circle"></div>
+                          <div class="circle"></div>
+                        </div>
+                      </button>
+                </p>
+                <p id="pw_criteria">
+                    Password must contain both capital and lower case letters.
+                </p>
+                <p id="error"></p>
+            </div>
         </div>
 
-        <div class="credentials">
-            <p>
-                Email: <input type="text" name="email">
-            </p>
-            <p>
-                Password: <input type="text" name="password">
-            </p>
-            <p>
-                Confirm Password: <input type="text" name="password_confirmation">    
-            </p>
-            <p>
-                <button class="btn" type="button">
-                    <strong>Register</strong>
-                    <div id="container-stars">
-                      <div id="stars"></div>
-                    </div>
-                  
-                    <div id="glow">
-                      <div class="circle"></div>
-                      <div class="circle"></div>
-                    </div>
-                  </button>
-            </p>
-        </div>
+        
         <script>
             // Generate stars
             for (let i = 0; i < 100; i++) {
@@ -58,5 +64,30 @@
               document.body.appendChild(star);
             }
           </script>
+          
+          <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+          
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+              apiKey: "AIzaSyDbI8T-JIXsDn7ty7uSUoF27gzhHxrg4Vo",
+              authDomain: "comp380-2227b.firebaseapp.com",
+              projectId: "comp380-2227b",
+              storageBucket: "comp380-2227b.appspot.com",
+              messagingSenderId: "373668540147",
+              appId: "1:373668540147:web:043bff9b5e81d65b9e9186",
+              measurementId: "G-NB7RQTTWE1"
+            };
+          
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+          </script>
+
     </body>
 </html>
