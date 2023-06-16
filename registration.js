@@ -26,6 +26,6 @@ function checkCredentials(){
         document.getElementById("error").innerHTML = "Password must contain upper and lower case characters.";
     }// else if 
     else {
-        document.getElementById("error").innerHTML = "Congrats, you're not a loser.";
+        document.getElementById("error").innerHTML = "Registration success";
     }// else
 }
