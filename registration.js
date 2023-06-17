@@ -1,6 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js";
-import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
+import { getFirestore, collection, addDoc, getCountFromServer, query, where} from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
 
 function isValidPassword(password){
     return /([A-Z].*[a-z]|[a-z].*[A-Z])/gm.test(password);
@@ -20,6 +19,47 @@ const firebaseConfig = {
     measurementId: "G-NB7RQTTWE1"
 };
 
+async function addUser(){
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const dbFormData = collection(db, 'formData');
+    
+    //Get Form Values
+    let form_email = document.getElementById("email").value;
+    let form_password = document.getElementById("password").value;
+    
+    // create data package
+    const data = {
+    email: form_email,
+    password: form_password,
+    };
+
+    // Check if email already exists
+    const formQuery = query(
+        dbFormData,
+        where('email', '==', form_email)
+    )
+
+    const snapshot = await getCountFromServer(formQuery);
+    const count = snapshot.data().count;
+    console.log(count);
+
+    if (count > 0){
+        alert("Account associated with that email already exists");
+    }// if
+    else{
+        addDoc(dbFormData, data)
+        .then(docRef => {
+        console.log(docRef.id); //p4eZcO5QV43IYnigxALJ
+        document.getElementById("error").innerHTML = "Registration success";
+        })
+        .catch(error => {
+            console.log(error);
+        })
+        alert("Account creation success!");
+    }// else
+}
+
 document.getElementById('submit').addEventListener('click', (e) => {
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
@@ -38,33 +78,8 @@ document.getElementById('submit').addEventListener('click', (e) => {
         document.getElementById("error").innerHTML = "Password must contain upper and lower case characters.";
     }// else if 
     else {
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        
-        //Variable to access database collection
-        const db = getFirestore(app);
-        const dbFormData = collection(db, 'formData');
-        
-        //Get Form Values
-        let form_email = document.getElementById("email").value;
-        let form_password = document.getElementById("password").value;
-        
-        // create data package
-        const data = {
-        email: form_email,
-        password: form_password,
-        };
-        
-        //Save Form Data To Firebase
-        addDoc(dbFormData, data)
-        .then(docRef => {
-        console.log(docRef.id); //p4eZcO5QV43IYnigxALJ
-        document.getElementById("error").innerHTML = "Registration success";
-        })
-        .catch(error => {
-            console.log(error);
-        })
-        document.location.href = "./main.html";
+        // check if email is already
+        addUser();
+        //document.location.href = "./main.html";
     }// else
 });
