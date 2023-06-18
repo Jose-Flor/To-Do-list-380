@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
 import { getFirestore, collection, addDoc, getCountFromServer, query, where} from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 
 function isValidPassword(password){
     return /([A-Z].*[a-z]|[a-z].*[A-Z])/gm.test(password);
@@ -19,19 +20,17 @@ const firebaseConfig = {
     measurementId: "G-NB7RQTTWE1"
 };
 
-async function addUser(){
+async function addUserToDB(){
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
     const dbFormData = collection(db, 'formData');
     
     //Get Form Values
     let form_email = document.getElementById("email").value;
-    let form_password = document.getElementById("password").value;
     
     // create data package
     const data = {
     email: form_email,
-    password: form_password,
     };
 
     // Check if email already exists
@@ -60,6 +59,36 @@ async function addUser(){
     }// else
 }
 
+function createUser(){
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth();
+    const dbFormData = collection(db, 'formData');
+    
+    //Get Form Values
+    let form_email = document.getElementById("email").value;
+    let form_password = document.getElementById("password").value;
+    
+    // create data package
+    const data = {
+    email: form_email,
+    password: form_password,
+    };
+
+    createUserWithEmailAndPassword(auth, form_email, form_password)
+    .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        addUserToDB();
+        // ...
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+    });
+}
+
 document.getElementById('submit').addEventListener('click', (e) => {
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
@@ -78,8 +107,8 @@ document.getElementById('submit').addEventListener('click', (e) => {
         document.getElementById("error").innerHTML = "Password must contain upper and lower case characters.";
     }// else if 
     else {
-        // check if email is already
-        addUser();
+        // add user to database and create user in authentication
+        createUser();
         //document.location.href = "./main.html";
     }// else
 });
