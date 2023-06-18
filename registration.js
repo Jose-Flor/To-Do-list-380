@@ -40,12 +40,14 @@ function createUser(){
     .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        // ...
+        // Redirect to signin.html
+        window.location.href = "./signin.html";
     })
     .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        // ..
+        // Show error message in console or on screen
+        console.log(errorCode, errorMessage);
     });
 }
 

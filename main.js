@@ -5,10 +5,8 @@ const addButton = document.getElementById('add-button');
 const todoInput = document.getElementById('todo-input');
 const todoList = document.getElementById('todo-list');
 
-// Show To Do List section when button is clicked
-todoButton.addEventListener('click', () => {
-  todoSection.style.display = 'block';
-});
+// Make the todoSection visible right away
+todoSection.style.display = 'block';
 
 // Add item to the list
 addButton.addEventListener('click', () => {
