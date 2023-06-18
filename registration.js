@@ -20,6 +20,35 @@ const firebaseConfig = {
     measurementId: "G-NB7RQTTWE1"
 };
 
+function createUser(){
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth();
+    const dbFormData = collection(db, 'formData');
+    
+    //Get Form Values
+    let form_email = document.getElementById("email").value;
+    let form_password = document.getElementById("password").value;
+    
+    // create data package
+    const data = {
+    email: form_email,
+    password: form_password,
+    };
+
+    createUserWithEmailAndPassword(auth, form_email, form_password)
+    .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        // ...
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+    });
+}
+
 async function addUserToDB(){
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
@@ -51,42 +80,13 @@ async function addUserToDB(){
         .then(docRef => {
         console.log(docRef.id); //p4eZcO5QV43IYnigxALJ
         document.getElementById("error").innerHTML = "Registration success";
+        createUser();
+        alert("Account creation success!");
         })
         .catch(error => {
             console.log(error);
         })
-        alert("Account creation success!");
     }// else
-}
-
-function createUser(){
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-    const auth = getAuth();
-    const dbFormData = collection(db, 'formData');
-    
-    //Get Form Values
-    let form_email = document.getElementById("email").value;
-    let form_password = document.getElementById("password").value;
-    
-    // create data package
-    const data = {
-    email: form_email,
-    password: form_password,
-    };
-
-    createUserWithEmailAndPassword(auth, form_email, form_password)
-    .then((userCredential) => {
-        // Signed in 
-        const user = userCredential.user;
-        addUserToDB();
-        // ...
-    })
-    .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
-    });
 }
 
 document.getElementById('submit').addEventListener('click', (e) => {
@@ -108,7 +108,7 @@ document.getElementById('submit').addEventListener('click', (e) => {
     }// else if 
     else {
         // add user to database and create user in authentication
-        createUser();
+        addUserToDB();
         //document.location.href = "./main.html";
     }// else
 });
