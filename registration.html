@@ -49,20 +49,6 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js"></script>
-  
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyDbI8T-JIXsDn7ty7uSUoF27gzhHxrg4Vo",
-      authDomain: "comp380-2227b.firebaseapp.com",
-      projectId: "comp380-2227b",
-      storageBucket: "comp380-2227b.appspot.com",
-      messagingSenderId: "373668540147",
-      appId: "1:373668540147:web:043bff9b5e81d65b9e9186",
-      measurementId: "G-NB7RQTTWE1"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-  </script>
 
   <script>
     for (let i = 0; i < 100; i++) {
@@ -78,30 +64,7 @@
       // Redirect to signin.html
       window.location.href = './signin.html';
     });
-
-    // Add event listener to the registration form submit button
-    document.getElementById('registration-form').addEventListener('submit', (e) => {
-      e.preventDefault(); // Prevent the default form submission behavior
-      
-      // Retrieve email and password values from the form fields
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-
-      // Perform the account creation process using Firebase Authentication
-      firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          // Account creation successful, additional actions or redirects can be performed here
-          const user = userCredential.user;
-          // Redirect to main.html upon successful account creation
-          window.location.href = './main.html';
-        })
-        .catch((error) => {
-          // Account creation failed, handle the error or display error message to the user
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          document.getElementById('error').textContent = `Error: ${errorCode}. Message: ${errorMessage}`;
-        });
-    });
   </script>
+  <script type="module" src="./registration.js"></script> <!-- Link to the updated JavaScript module -->
 </body>
 </html>

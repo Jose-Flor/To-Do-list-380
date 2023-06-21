@@ -20,12 +20,10 @@ const firebaseConfig = {
     measurementId: "G-NB7RQTTWE1"
 };
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const auth = getAuth(app);
-const dbFormData = collection(db, 'formData');
-
 async function createUser(form_email, form_password) {
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
@@ -46,6 +44,10 @@ async function createUser(form_email, form_password) {
 }
 
 async function addUserToDB() {
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const dbFormData = collection(db, 'formData');
+
     //Get Form Values
     let form_email = document.getElementById("email").value;
     let form_password = document.getElementById("password").value;
