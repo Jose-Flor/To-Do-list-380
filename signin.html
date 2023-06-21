@@ -35,13 +35,10 @@
       </div>
     </div>
 
-    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js"></script>
-    
-    <script>
+    <script type="module">
       import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js';
       import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
-      
+
       const firebaseConfig = {
         apiKey: "AIzaSyDbI8T-JIXsDn7ty7uSUoF27gzhHxrg4Vo",
         authDomain: "comp380-2227b.firebaseapp.com",
@@ -55,9 +52,7 @@
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
       const auth = getAuth(app);
-    </script>
 
-    <script>
       // Generate stars
       for (let i = 0; i < 100; i++) {
         const star = document.createElement('div');
