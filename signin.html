@@ -39,6 +39,9 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js"></script>
     
     <script>
+      import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js';
+      import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
+      
       const firebaseConfig = {
         apiKey: "AIzaSyDbI8T-JIXsDn7ty7uSUoF27gzhHxrg4Vo",
         authDomain: "comp380-2227b.firebaseapp.com",
@@ -50,14 +53,8 @@
       };
 
       // Initialize Firebase
-      firebase.initializeApp(firebaseConfig)
-    .then(() => {
-      console.log('Firebase initialized successfully');
-      // The rest of your code that uses Firebase
-    })
-    .catch((error) => {
-      console.error('Firebase initialization error:', error);
-    });
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
     </script>
 
     <script>
@@ -76,7 +73,7 @@
         const password = document.getElementById('password').value;
 
         // Perform the sign-in process using Firebase Authentication
-        firebase.auth().signInWithEmailAndPassword(email, password)
+        signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
               // Redirect to main.html upon successful sign-in
               window.location.href = './main.html';
