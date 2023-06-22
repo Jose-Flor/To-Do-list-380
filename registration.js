@@ -30,8 +30,14 @@ async function createUser(form_email, form_password) {
         form_email,
         form_password
       );
+
       // Signed in
       const user = userCredential.user;
+    
+       //Send email verification                          
+        await sendEmailVerification(user);
+
+
       // Redirect to signin.html
       window.location.href = "./signin.html";
     } catch (error) {
