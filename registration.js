@@ -35,8 +35,7 @@ async function createUser(form_email, form_password) {
       const user = userCredential.user;
     
        //Send email verification                          
-        await sendEmailVerification(user);
-
+       await sendEmailVerification(auth.currentUser);
 
       // Redirect to signin.html
       window.location.href = "./signin.html";
