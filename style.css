@@ -94,6 +94,9 @@ html, body, .container {
 
 #todo-list li:nth-child(even) {
   background-color: white;
+  max-width: 400px;
+  height: 20px;
+  overflow: auto;
 }
 
 #todo-list li:nth-child(odd) {
@@ -321,3 +324,9 @@ p {
   margin-top: 5px;
   font-size: 12px;
 }
+
+.container {
+  height: 100%; 
+  overflow: scroll;
+}
+
