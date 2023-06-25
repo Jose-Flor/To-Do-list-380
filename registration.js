@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
 import { getFirestore, collection, addDoc, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 
 function isValidPassword(password){
     return /([A-Z].*[a-z]|[a-z].*[A-Z])/gm.test(password);
@@ -30,8 +30,13 @@ async function createUser(form_email, form_password) {
         form_email,
         form_password
       );
+
       // Signed in
       const user = userCredential.user;
+    
+       //Send email verification                          
+       await sendEmailVerification(auth.currentUser);
+
       // Redirect to signin.html
       window.location.href = "./signin.html";
     } catch (error) {
