@@ -11,7 +11,7 @@
       <ul>
         <li>To Do List</li>
         <li><a href="./teammembers.html">Team Members</a></li>
-        <li><a href="./signout.html">Sign Out</a></li>
+        <li id="signout-btn"><a href="./signin.html">Sign Out</a></li>
         
         <!-- <li><a href="./registration.html">Registration</a></li> -->
         <!-- <li><a href="./signin.html">Sign-In</a></li> -->
@@ -91,5 +91,21 @@
   </div>
 
   <script type="module" src="main.js"></script>
+  <script>
+    document.getElementById('signout-btn').addEventListener('click', () => {
+        // signs out through using Firebase Authentication
+        signOut(auth)
+          .then(() => {
+            // Redirect to the sign-in page
+            window.location.href = './signin.html';
+          })
+          .catch((error) => {
+            // Gives out sign-out errors
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            document.getElementById('error').textContent = `Error: ${errorCode}. Message: ${errorMessage}`;
+          });
+      });
+    </script>
 </body>
 </html>
