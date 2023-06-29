@@ -97,5 +97,4 @@ for (let i = 0; i < 100; i++) {
 }
 
 Window.onload = function() {
-  console.log("faggot");
 }
