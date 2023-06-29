@@ -1,3 +1,17 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+import { getFirestore, collection, getDocs, updateDoc, arrayUnion, arrayRemove, doc } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDbI8T-JIXsDn7ty7uSUoF27gzhHxrg4Vo",
+  authDomain: "comp380-2227b.firebaseapp.com",
+  projectId: "comp380-2227b",
+  storageBucket: "comp380-2227b.appspot.com",
+  messagingSenderId: "373668540147",
+  appId: "1:373668540147:web:043bff9b5e81d65b9e9186",
+  measurementId: "G-NB7RQTTWE1"
+};
+
 // Get HTML elements
 const todoButton = document.getElementById('show-todo-button');
 const todoSection = document.getElementById('todo-section');
@@ -7,6 +21,11 @@ const todoList = document.getElementById('todo-list');
 
 // Make the todoSection visible right away
 todoSection.style.display = 'block';
+
+// initialize firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth();
+const db = getFirestore(app);
 
 // Add item to the list
 addButton.addEventListener('click', () => {
@@ -18,6 +37,25 @@ addButton.addEventListener('click', () => {
   deleteButton.classList.add('deleteButton'); // assign a class to the button for styling
 
   deleteButton.addEventListener('click', () => {
+    onAuthStateChanged(auth, (user) => {
+      // if user is signed in, add task to their document
+      if (user) {
+        const email = user.email; // get current user's email
+        const dbFormData = collection(db, 'formData'); // collection reference
+        const docReference = doc(db, "formData", email); // document refernce; database, collection, document id
+        
+        // remove the task from the user's firebase document
+        updateDoc(docReference, {
+          task: arrayRemove(listItem.innerText.substring(0,listItem.innerText.length-1))
+        }); 
+      }
+      else {
+        alert("User is signed out");
+        document.location.href = "./signin.html";
+      }
+    });
+    
+    // graphically remove the item from the to-do list
     todoList.removeChild(listItem);
   });
 
@@ -28,6 +66,24 @@ addButton.addEventListener('click', () => {
   
   // Clear the input field
   todoInput.value = '';
+
+  onAuthStateChanged(auth, (user) => {
+    // if user is signed in, add task to their document
+    if (user) {
+      const email = user.email; // get current user's email
+      const dbFormData = collection(db, 'formData'); // collection reference
+      const docReference = doc(db, "formData", email); // document refernce; database, collection, document id
+      
+      // add the task to the user's firebase document
+      updateDoc(docReference, {
+        task: arrayUnion(listItem.textContent.substring(0,listItem.textContent.length-1))        
+      }); 
+    }
+    else {
+      alert("User is signed out");
+      document.location.href = "./signin.html";
+    } 
+  });
 });
 
 // Generate stars
