@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-import { getFirestore, collection, addDoc, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
+import { getFirestore, collection, setDoc, query, where, getDocs, doc } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
 import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 
 function isValidPassword(password){
@@ -74,15 +74,10 @@ async function addUserToDB() {
         createUser(form_email, form_password);
 
         // Add to firestore database
-        addDoc(dbFormData, {email: form_email})
-        .then(docRef => {
-            console.log(docRef.id); //p4eZcO5QV43IYnigxALJ
-            document.getElementById("error").innerHTML = "Registration success";
-            alert("Account creation success!");
-        })
-        .catch(error => {
-            console.log(error);
+        await setDoc(doc(db, "formData", form_email), {
+            email: form_email
         });
+        alert("Account creation success!");
     }
 }
 
