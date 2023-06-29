@@ -95,6 +95,3 @@ for (let i = 0; i < 100; i++) {
   star.style.left = `${Math.random() * 100}vw`;
   document.body.appendChild(star);
 }
-
-Window.onload = function() {
-}
