@@ -34,13 +34,11 @@ async function loadList() {
             const docSnap = await getDoc(docReference);
 
             if (docSnap.exists()) {
-                
-                
-                // Clear the input field
-                todoInput.value = '';
                 for (let i = 0; i < docSnap.data()["task"].length; i++){
                     const listItem = document.createElement('li');
                     const deleteButton = document.createElement('button');
+                    // Clear the input field
+                    todoInput.value = '';
                     // Add delete functionality to the button
                     deleteButton.textContent = 'X';
                     deleteButton.classList.add('deleteButton'); // assign a class to the button for styling
