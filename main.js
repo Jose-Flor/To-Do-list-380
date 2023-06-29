@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-import { getFirestore, collection, getDocs, updateDoc, arrayUnion, arrayRemove, doc } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
+import { getFirestore, collection, updateDoc, arrayUnion, arrayRemove, doc } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 
 const firebaseConfig = {
@@ -36,6 +36,7 @@ addButton.addEventListener('click', () => {
   deleteButton.textContent = 'X';
   deleteButton.classList.add('deleteButton'); // assign a class to the button for styling
 
+  // when delete button is pressed
   deleteButton.addEventListener('click', () => {
     onAuthStateChanged(auth, (user) => {
       // if user is signed in, add task to their document
@@ -54,7 +55,7 @@ addButton.addEventListener('click', () => {
         document.location.href = "./signin.html";
       }
     });
-    
+
     // graphically remove the item from the to-do list
     todoList.removeChild(listItem);
   });
@@ -93,4 +94,8 @@ for (let i = 0; i < 100; i++) {
   star.style.top = `${Math.random() * 100}vh`;
   star.style.left = `${Math.random() * 100}vw`;
   document.body.appendChild(star);
+}
+
+Window.onload = function() {
+  console.log("faggot");
 }
