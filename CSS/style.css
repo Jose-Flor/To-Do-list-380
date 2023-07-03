@@ -348,3 +348,23 @@ p {
   overflow: scroll;
 }
 
+#team-icon{
+  height: 25px;
+  width: 25px;
+  filter: brightness(0) invert(1);
+  margin-right: 5px;
+}
+
+#todo-icon{
+  height: 25px;
+  width: 25px;
+  filter: brightness(0) invert(1);
+  margin-right: 5px;
+}
+
+#logout-icon{
+  height: 25px;
+  width: 25px;
+  filter: brightness(0) invert(1);
+  margin-right: 5px;
+}
