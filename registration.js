@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
 import { getFirestore, collection, setDoc, query, where, getDocs, doc } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
 import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+import { FBConfig } from "./FirebaseConfig.js"
 
 function isValidPassword(password){
     return /([A-Z].*[a-z]|[a-z].*[A-Z])/gm.test(password);
@@ -10,15 +11,7 @@ function isValidEmail(email){
     return /([a-zA-Z]).*\@([a-zA-Z]).*/gm.test(email);
 }
 
-const firebaseConfig = {
-    apiKey: "AIzaSyDbI8T-JIXsDn7ty7uSUoF27gzhHxrg4Vo",
-    authDomain: "comp380-2227b.firebaseapp.com",
-    projectId: "comp380-2227b",
-    storageBucket: "comp380-2227b.appspot.com",
-    messagingSenderId: "373668540147",
-    appId: "1:373668540147:web:043bff9b5e81d65b9e9186",
-    measurementId: "G-NB7RQTTWE1"
-};
+const firebaseConfig = FBConfig();
 
 async function createUser(form_email, form_password) {
     const app = initializeApp(firebaseConfig);

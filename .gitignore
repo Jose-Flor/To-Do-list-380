@@ -1,0 +1,2 @@
+# ignore firebase config file to prevent blatantly stating API keys in code
+FirebaseConfig.js
