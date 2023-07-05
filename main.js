@@ -29,6 +29,12 @@ const db = getFirestore(app);
 
 // Add item to the list
 addButton.addEventListener('click', () => {
+  // If input field is empty, then show an alert and stop execution
+  if (!todoInput.value.trim()) {
+    alert("Please enter a task before pressing the 'Add' button.");
+    return;
+  }
+  
   const listItem = document.createElement('li');
   const deleteButton = document.createElement('button');
 
