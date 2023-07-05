@@ -39,7 +39,7 @@ body {
   background-color: #333;
   color: #fff;
   padding: 20px;
-  height: 100%;
+  height: 100
 }
 
 .sidebar ul {
@@ -60,6 +60,20 @@ body {
   color: #fff;
 }
 
+.sidebar li:nth-child(3):after {
+  content: "";
+  position: relative;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+}
+.sidebar li:nth-child(3) {
+  padding-top: 80px;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+}
 .content {
   flex: 1;
   padding: 20px;
@@ -334,3 +348,23 @@ p {
   overflow: scroll;
 }
 
+#team-icon{
+  height: 25px;
+  width: 25px;
+  filter: brightness(0) invert(1);
+  margin-right: 5px;
+}
+
+#todo-icon{
+  height: 25px;
+  width: 25px;
+  filter: brightness(0) invert(1);
+  margin-right: 5px;
+}
+
+#logout-icon{
+  height: 25px;
+  width: 25px;
+  filter: brightness(0) invert(1);
+  margin-right: 5px;
+}
