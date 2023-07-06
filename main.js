@@ -1,4 +1,4 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+import { initializeApp, getApps, deleteApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
 import { getFirestore, collection, updateDoc, arrayUnion, arrayRemove, doc } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 import { FBConfig } from "./FirebaseConfig.js"
@@ -11,17 +11,29 @@ const todoSection = document.getElementById('todo-section');
 const addButton = document.getElementById('add-button');
 const todoInput = document.getElementById('todo-input');
 const todoList = document.getElementById('todo-list');
+const signoutButton = document.getElementById('signout-button'); // Added sign out button
 
 // Make the todoSection visible right away
 todoSection.style.display = 'block';
 
 // initialize firebase
-const app = initializeApp(firebaseConfig);
+let app;
+if (!getApps().length) {
+  app = initializeApp(firebaseConfig);
+} else {
+  app = getApps()[0]; // if already initialized, use that one
+}
 const auth = getAuth();
 const db = getFirestore(app);
 
 // Add item to the list
 addButton.addEventListener('click', () => {
+  // If input field is empty, then show an alert and stop execution
+  if (!todoInput.value.trim()) {
+    alert("Please enter a task before pressing the 'Add' button.");
+    return;
+  }
+  
   const listItem = document.createElement('li');
   const deleteButton = document.createElement('button');
 
@@ -32,7 +44,7 @@ addButton.addEventListener('click', () => {
   // when delete button is pressed
   deleteButton.addEventListener('click', () => {
     onAuthStateChanged(auth, (user) => {
-      // if user is signed in, add task to their document
+      // if user is signed in, remove task from their document
       if (user) {
         const email = user.email; // get current user's email
         const dbFormData = collection(db, 'formData'); // collection reference
@@ -42,10 +54,6 @@ addButton.addEventListener('click', () => {
         updateDoc(docReference, {
           task: arrayRemove(listItem.innerText.substring(0,listItem.innerText.length-1))
         }); 
-      }
-      else {
-        alert("User is signed out");
-        document.location.href = "./signin.html";
       }
     });
 
@@ -73,10 +81,17 @@ addButton.addEventListener('click', () => {
         task: arrayUnion(listItem.textContent.substring(0,listItem.textContent.length-1))        
       }); 
     }
-    else {
-      alert("User is signed out");
-      document.location.href = "./signin.html";
-    } 
+  });
+});
+
+// Sign Out functionality
+signoutButton.addEventListener('click', () => {
+  signOut(auth).then(() => {
+    // Sign-out successful.
+    document.location.href = "./signin.html";
+  }).catch((error) => {
+    // An error happened.
+    console.error("Error signing out: ", error);
   });
 });
 
