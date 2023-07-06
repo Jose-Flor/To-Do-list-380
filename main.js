@@ -1,16 +1,9 @@
 import { initializeApp, getApps, deleteApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
 import { getFirestore, collection, updateDoc, arrayUnion, arrayRemove, doc } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+import { FBConfig } from "./FirebaseConfig.js"
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDbI8T-JIXsDn7ty7uSUoF27gzhHxrg4Vo",
-  authDomain: "comp380-2227b.firebaseapp.com",
-  projectId: "comp380-2227b",
-  storageBucket: "comp380-2227b.appspot.com",
-  messagingSenderId: "373668540147",
-  appId: "1:373668540147:web:043bff9b5e81d65b9e9186",
-  measurementId: "G-NB7RQTTWE1"
-};
+const firebaseConfig = FBConfig();
 
 // Get HTML elements
 const todoButton = document.getElementById('show-todo-button');
