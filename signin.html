@@ -38,7 +38,7 @@
     <script type="module">
       import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js';
       import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
-      import { FBConfig } from "./FirebaseConfig.js";
+      import { FBConfig } from "./FirebaseConfig.js"
 
       const firebaseConfig = FBConfig();
 
@@ -63,6 +63,13 @@
         // Perform the sign-in process using Firebase Authentication
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
+              // Signed in
+              const user = userCredential.user;
+              // Check if email is verified
+              if (!user.emailVerified) {
+                  // Send a message to the user
+                  alert("Email not verified");
+              } 
               // Redirect to main.html upon successful sign-in
               window.location.href = './main.html';
             })
