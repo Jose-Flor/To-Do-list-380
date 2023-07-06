@@ -27,14 +27,8 @@ async function createUser(form_email, form_password) {
       // Signed in
       const user = userCredential.user;
     
-       //Send email verification                          
-       await sendEmailVerification(auth.currentUser);
-
-        // Check if email is verified
-        if (!user.emailVerified) {
-            // Send a message to the user
-            console.log("Email not verified");
-        } 
+      //Send email verification                          
+      sendEmailVerification(auth.currentUser);
 
       // Redirect to signin.html
       window.location.href = "./signin.html";
