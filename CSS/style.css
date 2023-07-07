@@ -349,22 +349,22 @@ p {
 }
 
 #team-icon{
-  height: 25px;
-  width: 25px;
+  height: 20px;
+  width: 20px;
   filter: brightness(0) invert(1);
   margin-right: 5px;
 }
 
 #todo-icon{
-  height: 25px;
-  width: 25px;
+  height: 15px;
+  width: 15px;
   filter: brightness(0) invert(1);
   margin-right: 5px;
 }
 
 #logout-icon{
-  height: 25px;
-  width: 25px;
+  height: 15px;
+  width: 15px;
   filter: brightness(0) invert(1);
   margin-right: 5px;
 }
@@ -378,4 +378,8 @@ p {
   left: 0;
   pointer-events: none;
   z-index: 99999999; 
+}
+
+.body {
+  cursor: url('Images/team-icon.png'), auto;
 }
