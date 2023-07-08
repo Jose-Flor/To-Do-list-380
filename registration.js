@@ -13,6 +13,14 @@ function isValidEmail(email){
 
 const firebaseConfig = FBConfig();
 
+for (let i = 0; i < 100; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.top = `${Math.random() * 100}vh`;
+    star.style.left = `${Math.random() * 100}vw`;
+    document.body.appendChild(star);
+  }
+
 async function createUser(form_email, form_password) {
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
@@ -116,3 +124,8 @@ document.getElementById('submit').addEventListener('keypress', function (e) {
     }
 });
 
+// Add event listener to the cancel button
+document.getElementById('cancel').addEventListener('click', () => {
+    // Redirect to signin.html
+    window.location.href = './signin.html';
+  });
