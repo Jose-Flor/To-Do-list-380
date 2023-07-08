@@ -23,7 +23,7 @@ if (!getApps().length) {
 } else {
   app = getApps()[0]; // if already initialized, use that one
 }
-const auth = getAuth();
+const auth = getAuth(app);
 const db = getFirestore(app);
 
 // Add item to the list

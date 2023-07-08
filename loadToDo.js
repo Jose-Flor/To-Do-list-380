@@ -7,7 +7,7 @@ const firebaseConfig = FBConfig();
 
 // initialize firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth();
+const auth = getAuth(app);
 const db = getFirestore(app);
 
 // Get HTML elements
