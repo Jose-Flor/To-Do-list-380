@@ -427,6 +427,6 @@ p {
 }
 
 .body {
-  
-  cursor: url('Images/team-icon.png'), auto;
+  background-size: 100px 100px;
+  cursor: url(https://clipart-library.com/newhp/kissclipart-cartoon-rocket-ship-clipart-t-shirt-rocket-ship-d4375529ba4ee6db.png), auto;
 }
