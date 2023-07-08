@@ -1,3 +1,28 @@
+.container .sidebar{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 20vh;
+  height: 100vh;
+}
+
+.container .content{
+  width: 80vh;
+  margin-left: 20vh;
+  
+}
+
+.container .content-signin{
+  width: 100vh;
+  align-content: center;
+  
+}
+
+.container .team_data{
+  width: 80vh;
+  margin-left: 30vh;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -39,7 +64,10 @@ body {
   background-color: #333;
   color: #fff;
   padding: 20px;
-  height: 100
+  height: 100%;
+  font-size: 17px;
+  grid-column: 1/2;
+  grid-row: 2/3;
 }
 
 .sidebar ul {
@@ -47,6 +75,7 @@ body {
   padding: 0;
   margin: 0;
   text-align: center;
+  margin-top: 10%;
 }
 
 .sidebar li {
@@ -55,25 +84,37 @@ body {
   padding-bottom: 10px;
 }
 
+.sidebar li:last-child {
+padding-top: 380%;
+ 
+}
+
 .sidebar a {
   text-decoration: none;
   color: #fff;
 }
 
-.sidebar li:nth-child(3):after {
-  content: "";
-  position: relative;
-  bottom: 0;
-  left: 0;
-  height: 2px;
-  width: 100%;
+
+.content-signin {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
-.sidebar li:nth-child(3) {
-  padding-top: 80px;
-  bottom: 0;
-  left: 0;
-  padding: 10px;
+
+.content-registration {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
+
 .content {
   flex: 1;
   padding: 20px;
@@ -141,8 +182,8 @@ html, body, .container {
 }
   
 .logo {
-  height: 20px;
-  width: 20px;
+  text-align: center;
+  font-size: 17px;
 }
   
 li a:hover {
@@ -349,22 +390,22 @@ p {
 }
 
 #team-icon{
-  height: 20px;
-  width: 20px;
+  height: 17px;
+  width: 17px;
   filter: brightness(0) invert(1);
   margin-right: 5px;
 }
 
 #todo-icon{
-  height: 15px;
-  width: 15px;
+  height: 17px;
+  width: 17px;
   filter: brightness(0) invert(1);
   margin-right: 5px;
 }
 
 #logout-icon{
-  height: 15px;
-  width: 15px;
+  height: 17px;
+  width: 17px;
   filter: brightness(0) invert(1);
   margin-right: 5px;
 }

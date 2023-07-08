@@ -12,9 +12,6 @@
         <li><img src="Images/todo-icon.png" alt="Team" id="todo-icon">To Do List</li>
         <li><a href="./teammembers.html"><img src="Images/team-icon.png" alt="Team" id="team-icon">Team Members</a></li>
         <li id="signout-btn"><a href="./signin.html"><img src="Images/logout-icon.png" alt="Team" id="logout-icon">Sign Out</a></li>
-        
-        <!-- <li><a href="./registration.html">Registration</a></li> -->
-        <!-- <li><a href="./signin.html">Sign-In</a></li> -->
       </ul>
     </div>
     <div class="circle"></div>
@@ -39,7 +36,7 @@
   <div class="circle"></div>
     
     <div class="content">    
-      <h1>O r g a n i z e O r b i t</h1>
+      <h1>O r g a n i z e   O r b i t</h1>
       <p>Turn Your Task Chaos into Constellations!</p>
 
       <div id="todo-section" style="display: none;">
@@ -47,6 +44,7 @@
         <button id="add-button">Add</button>
         <ul id="todo-list">
         </ul>
+      </div>
       </div>
       <script type="module">
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js';
@@ -106,10 +104,6 @@
           window.location.href = './registration.html';
         });
       </script>
-
-    </div>
-  </div>
-
   <script type="module" src="main.js"></script>
   <script>
     document.getElementById('signout-btn').addEventListener('click', () => {
@@ -127,5 +121,6 @@
           });
       });
     </script>
+  
 </body>
 </html>
