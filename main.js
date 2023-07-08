@@ -5,6 +5,15 @@ import { FBConfig } from "./FirebaseConfig.js"
 
 const firebaseConfig = FBConfig();
 
+// Generate stars
+for (let i = 0; i < 100; i++) {
+  const star = document.createElement('div');
+  star.className = 'star';
+  star.style.top = `${Math.random() * 100}vh`;
+  star.style.left = `${Math.random() * 100}vw`;
+  document.body.appendChild(star);
+}
+
 // Get HTML elements
 const todoButton = document.getElementById('show-todo-button');
 const todoSection = document.getElementById('todo-section');
@@ -155,12 +164,3 @@ signoutButton.addEventListener('click', () => {
     console.error("Error signing out: ", error);
   });
 });
-
-// Generate stars
-for (let i = 0; i < 100; i++) {
-  const star = document.createElement('div');
-  star.className = 'star';
-  star.style.top = `${Math.random() * 100}vh`;
-  star.style.left = `${Math.random() * 100}vw`;
-  document.body.appendChild(star);
-}
