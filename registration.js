@@ -93,3 +93,25 @@ document.getElementById('submit').addEventListener('click', (e) => {
         addUserToDB();
     }
 });
+
+document.getElementById('submit').addEventListener('keypress', function (e) {
+    if (e.key == 'Enter'){
+        e.preventDefault();
+
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        var passwordConfirmation = document.getElementById("password_confirmation").value;
+
+        if (!isValidEmail(email)){
+            document.getElementById("error").innerHTML = "Invalid email";
+        } else if (password === "" || passwordConfirmation === "") {
+            document.getElementById("error").innerHTML = "Must enter password.";
+        } else if (password !== passwordConfirmation){
+            document.getElementById("error").innerHTML = "Passwords do not match.";
+        } else if (!isValidPassword(password)){
+            document.getElementById("error").innerHTML = "Password must contain upper and lower case characters.";
+        } else {
+            addUserToDB();
+        }
+    }
+});
