@@ -11,9 +11,6 @@ const auth = getAuth();
 const db = getFirestore(app);
 
 // Get HTML elements
-const todoButton = document.getElementById('show-todo-button');
-const todoSection = document.getElementById('todo-section');
-const addButton = document.getElementById('add-button');
 const todoInput = document.getElementById('todo-input');
 const todoList = document.getElementById('todo-list');
 
