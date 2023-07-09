@@ -1,3 +1,28 @@
+.container .sidebar{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 20vh;
+  height: 100vh;
+}
+
+.container .content{
+  width: 80vh;
+  margin-left: 20vh;
+  
+}
+
+.container .content-signin{
+  width: 100vh;
+  align-content: center;
+  
+}
+
+.container .team_data{
+  width: 80vh;
+  margin-left: 30vh;
+}
+
 body {
     margin: 0;
     padding: 0;
