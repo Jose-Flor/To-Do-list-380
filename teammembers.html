@@ -3,13 +3,15 @@
     <head>
         <title>O r g a n i z e O r b i t</title>
         <link rel="stylesheet" type="text/css" href="./CSS/style.css">
+        
     </head>
     <body>
         <div class="container">
             <div class="sidebar">
               <ul>
                 <li><a href="./main.html">To Do List</a></li>
-                <li><a href="./teammembers.html">Team Members</a></li>
+                <li><a href="#">Team Members</a></li>
+                <li><a href="#" id="signout-button">Sign Out</a></li>
               </ul>
             </div>
             <div class="team_data">
@@ -50,15 +52,6 @@
                 </p>
             </div>            
         </div>
-        <script>
-            // Generate stars
-            for (let i = 0; i < 100; i++) {
-              const star = document.createElement('div');
-              star.className = 'star';
-              star.style.top = `${Math.random() * 100}vh`;
-              star.style.left = `${Math.random() * 100}vw`;
-              document.body.appendChild(star);
-            }
-          </script>
+        <script type="module" src="./teammembers.js"></script>
     </body>
 </html>
