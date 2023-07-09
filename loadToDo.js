@@ -40,7 +40,6 @@ async function loadList() {
                     listItem.textContent = docSnap.data()["task"][i];
                     listItem.appendChild(deleteButton);
                     todoList.appendChild(listItem);
-                    console.log(docSnap.data()["task"][i]);
 
                     // when delete button is pressed
                     deleteButton.addEventListener('click', () => {
