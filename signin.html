@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>O r g a n i z e O r b i t</title>
+    <title>Organize Orbit</title>
     <link rel="stylesheet" type="text/css" href="./CSS/signin.css">
   </head>
   <body>
     <div class="container">
       <div class="content">
-        <h1> O r g a n i z e O r b i t</h1>
+        <h1>Organize Orbit</h1>
         <div class="credentials">
           <p>
             <input style="width:300px; height:30px;" type="text" name="email" id="email" placeholder="Email">
@@ -67,11 +67,12 @@
               const user = userCredential.user;
               // Check if email is verified
               if (!user.emailVerified) {
-                  // Send a message to the user
-                  alert("Email not verified");
-              } 
-              // Redirect to main.html upon successful sign-in
-              window.location.href = './main.html';
+                // Send a message to the user
+                alert("Email not verified");
+              } else {
+                // Redirect to main.html upon successful sign-in
+                window.location.href = './main.html';
+              }
             })
             .catch((error) => {
               // Handle sign-in errors
@@ -93,7 +94,7 @@
         window.location.href = './registration.html';
       });
 
-      // Add event listener for signin with enter key
+      // Add event listener for sign-in with enter key
       document.getElementById('email').addEventListener('keypress', function (e) {
         if (e.key == 'Enter') {
           const email = document.getElementById('email').value;
@@ -106,11 +107,12 @@
                 const user = userCredential.user;
                 // Check if email is verified
                 if (!user.emailVerified) {
-                    // Send a message to the user
-                    alert("Email not verified");
-                } 
-                // Redirect to main.html upon successful sign-in
-                window.location.href = './main.html';
+                  // Send a message to the user
+                  alert("Email not verified");
+                } else {
+                  // Redirect to main.html upon successful sign-in
+                  window.location.href = './main.html';
+                }
               })
               .catch((error) => {
                 // Handle sign-in errors
@@ -121,7 +123,7 @@
         }
       });
 
-      // Add event listener for signin with enter key
+      // Add event listener for sign-in with enter key
       document.getElementById('password').addEventListener('keypress', function (e) {
         if (e.key == 'Enter') {
           const email = document.getElementById('email').value;
@@ -134,11 +136,12 @@
                 const user = userCredential.user;
                 // Check if email is verified
                 if (!user.emailVerified) {
-                    // Send a message to the user
-                    alert("Email not verified");
-                } 
-                // Redirect to main.html upon successful sign-in
-                window.location.href = './main.html';
+                  // Send a message to the user
+                  alert("Email not verified");
+                } else {
+                  // Redirect to main.html upon successful sign-in
+                  window.location.href = './main.html';
+                }
               })
               .catch((error) => {
                 // Handle sign-in errors

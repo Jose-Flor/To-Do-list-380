@@ -70,7 +70,7 @@ async function addUserToDB() {
         await setDoc(doc(db, "formData", form_email), {
             email: form_email
         });
-        alert("Account creation success!");
+        alert("Account creation success! Please verify your email before attempting to sign in.");
     }
 }
 
