@@ -1,0 +1,2 @@
+# don't include file containing api keys
+FirebaseConfig.js
